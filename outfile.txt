@@ -1,0 +1,16 @@
+#include <DigiKeyboard.h>
+void setup() {
+	DigiKeyboard.sendKeystroke(0);
+	DigiKeyboard.delay(500);
+	// Example; a simple Hello World Program;
+	DigiKeyboard.sendKeystroke(KEY_R, MOD_GUI_LEFT);
+	DigiKeyboard.delay(200);
+	DigiKeyboard.print("notepad");
+	DigiKeyboard.sendKeystroke(KEY_ENTER);
+	DigiKeyboard.delay(200);
+	DigiKeyboard.print("Hello World");
+}
+
+void loop() {
+
+}
