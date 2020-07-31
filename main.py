@@ -1,8 +1,3 @@
-"""
-Converts Ducky Script to Arduino Script
-Works for: REM, STRING, GUI, DELAY, and ENTER
-"""
-
 with open("infile.txt", "r") as f:
 	text = f.read()
 
