@@ -11,6 +11,7 @@ conversions = {
 	"LEFT": "KEY_LEFT_ARROW",
 	"RIGHT": "KEY_RIGHT_ARROW"
 }
+
 wholeString = ""  # To avoid writing half the file when encountering an unrecognised command
 
 with open("infile.txt", "r") as f:
@@ -22,17 +23,17 @@ with open("outfile.txt", "w") as f:
 	DigiKeyboard.delay(500);""")
 	for i in text.split("\n"):
 		# These cases need different endings so the dictionary cannot be used
-		if i[:6] == "STRING":
+		if i.startswith("STRING"):
 			string = STARTER + "print(\"" + i[7:] + "\");"
-		elif i[:3] == "REM":
+		elif i.startswith("REM"):
 			string = "//" + i[3:]
-		elif i[:5] == "DELAY":
+		elif i.startswith("DELAY"):
 			string = STARTER + "delay(" + i[6:] + ");"
-		elif i[:3] == "GUI" or i[:7] == "WINDOWS" or i[:3] == "WIN":
+		elif i.startswith("GUI") or i.startswith("WINDOWS") or i.startswith("WIN"):
 			string = STARTER + "sendKeyStroke(KEY_" + i[-1].upper() + ", MOD_GUI_LEFT);"
-		elif i[:3] == "ALT":
+		elif i.startswith("ALT"):
 			string = STARTER + "sendKeyStroke(KEY_LEFT_ALT, KEY_" + i[-1].upper() + ");"
-		elif i[:4] == "CTRL" or i[:7] == "CONTROL":
+		elif i.startswith("CTRL") or i.startswith("CONTROL"):
 			string = STARTER + "sendKeyStroke(MOD_CONTROL_LEFT, KEY_" + i[-1].upper() + ");"
 		# If not the ones above, try use the dictionary
 		else:
